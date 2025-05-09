@@ -9,7 +9,7 @@ model, prob_threshold = joblib.load('./models/rf_model_with_threshold.joblib')
 # Load the data
 @st.cache_data
 def load_data():
-    df = pd.read_csv('../data/data_outliers_cap_features_select.csv')
+    df = pd.read_csv('./data/data_outliers_cap_features_select.csv')
     return df
 
 df = load_data()
