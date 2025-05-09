@@ -4,12 +4,12 @@ import joblib
 
 
 # Load the model
-model, prob_threshold = joblib.load('./models/rf_model_with_threshold.joblib')
+model, prob_threshold = joblib.load('./models/rf_model2_with_threshold.joblib')
 
 # Load the data
 @st.cache_data
 def load_data():
-    df = pd.read_csv('./data/data_outliers_cap_features_select.csv')
+    df = pd.read_csv('./data/data_less_features_no_label.csv')
     return df
 
 df = load_data()
@@ -19,23 +19,21 @@ st.title('Conversion Prediction')
 
 # Input fields
 country = st.selectbox('Country', df['country'].unique())
-category = st.selectbox('Category', df['category'].unique())
-year = st.selectbox('Year', df['year'].unique())
+productgroup = st.selectbox('Product Group', df['productgroup'].unique())
+category = st.selectbox('Category', df[df['productgroup'] == productgroup]['category'].unique())
+gender = st.selectbox('Gender', df[df['category'] == category]['gender'].unique())
 month = st.selectbox('Month', df['month'].unique())
-week_number = st.selectbox('Week Number', df['week_number'].unique())
-current_price = st.number_input('Current Price')
-ratio = st.number_input('Ratio')
+ratio = st.slider('Ratio', min_value = 0.3, max_value = 1.0, step = 0.01)
 promo1 = st.selectbox('Promo1', df['promo1'].unique())
 promo2 = st.selectbox('Promo2', df['promo2'].unique())
 
 # Create a new dataframe with the input values
 new_data = pd.DataFrame({
     'country': [country],
+    'productgroup': [productgroup],
     'category': [category],
-    'year': [year],
+    'gender': [gender],
     'month': [month],
-    'week_number': [week_number],
-    'current_price': [current_price],
     'ratio': [ratio],
     'promo1': [promo1],
     'promo2': [promo2]
