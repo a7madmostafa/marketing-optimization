@@ -45,8 +45,8 @@ The dataset contains product, promotion, pricing, and campaign performance featu
 
 3. **Business ROI Simulation**
    - Developed reusable function to simulate profit and ROI based on:
-     - `profit_per_conversion = $10`
-     - `cost_per_offer = $1`
+     - `profit_per_conversion = $804.5`
+     - `cost_per_offer = $6.5`
    - Evaluated thresholds from 0.2 to 0.9
 
 ---
