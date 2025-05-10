@@ -110,6 +110,12 @@ A Random Forest model was trained to predict which customers are most likely to 
 
 ---
 
+## Streamlit App
+
+You can view the app here: [Conversion Prediction](https://conversion-optimization.streamlit.app/)
+
+---
+
 ## 📈 Final Evaluation
 
 ### 📋 Classification Report
@@ -126,8 +132,3 @@ A Random Forest model was trained to predict which customers are most likely to 
 ### 🔲 Confusion Matrix
 ![](./reports/rf_less_features_confusion_matrix.png)
 
----
-
-## Streamlit App
-
-You can view the app here: [Conversion Prediction](https://conversion-optimization.streamlit.app/)
