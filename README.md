@@ -15,7 +15,7 @@ This project simulates a real-world consulting engagement with **Sports Wear Gro
 
 ---
 
-## 🧠 Data Summary
+## 🧠 Data Summary [After Feature Engineering]
 
 The dataset contains product-level features and campaign results across several dimensions:
 
@@ -23,8 +23,8 @@ The dataset contains product-level features and campaign results across several 
 - `productgroup`, `category`, `style`, `gender`, `sizes`, `main_color`, `sec_color`
 
 ### 💸 Pricing & Promotion
-- `regular_price`, `current_price`, `ratio` (discount %), `cost`, `discount_pct`
-- `promo1` (media ad), `promo2` (in-store promo)
+- `regular_price`, `current_price`, `ratio` (current/regular price), `cost`, `discount_pct`
+- `promo1`, `promo2` 
 
 ### 🗓️ Time Context
 - `retailweek`, `month`, `week_number`, `holiday_season`, `month-yr`
@@ -92,9 +92,10 @@ A Random Forest model was trained to predict which customers are most likely to 
   - Final model: Random Forest with threshold tuning
 
 - **Final Threshold**: 0.65  
-  - **Precision**: 38%  
-  - **Recall**: 68%  
-  - **Accuracy**: 74%  
+  - **Precision**: 84%  
+  - **Recall**: 75% 
+  - **F1 Score**: 78% 
+  - **Accuracy**: 75%  
   - Balanced between reach and precision
 
 ---

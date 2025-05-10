@@ -4,7 +4,7 @@ import joblib
 
 
 # Load the model
-model, prob_threshold = joblib.load('./models/rf_model_with_threshold.joblib')
+model, prob_threshold = joblib.load('./models/rf_model_less_features_with_threshold.joblib')
 
 # Load the data
 @st.cache_data
