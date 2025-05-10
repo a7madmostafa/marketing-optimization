@@ -128,6 +128,6 @@ A Random Forest model was trained to predict which customers are most likely to 
 
 ---
 
+## Streamlit App
 
-
-
+You can view the app here: [Conversion Prediction](https://conversion-optimization.streamlit.app/)
