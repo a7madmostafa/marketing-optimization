@@ -121,6 +121,7 @@ A Random Forest model was trained to predict which customers are most likely to 
 | **Macro Avg**| 0.65      | 0.73   | 0.66     | 15539   |
 | **Weighted Avg** | 0.84  | 0.75   | 0.78     | 15539   |
 
+---
 
 ### 🔲 Confusion Matrix
 ![](./reports/rf_less_features_confusion_matrix.png)
