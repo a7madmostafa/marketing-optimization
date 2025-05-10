@@ -76,6 +76,16 @@ The dataset contains product-level features and campaign results across several 
 
 ---
 
+## ✅ Takeaways
+
+- Women, Germany, and Hardware Accessories drive the majority of profit
+- Promo1 campaigns increase sales but can erode margin
+- Discounting is effective, but optimal levels must be balanced
+- Random Forest model provides a valuable targeting layer for campaign efficiency
+- Future testing and rollout can integrate predictions with marketing tools
+
+---
+
 ## 🤖 Predictive Modeling: Random Forest Classifier
 
 A Random Forest model was trained to predict which customers are most likely to convert. The goal is to support **smarter campaign targeting** that avoids waste and maximizes return.
@@ -117,21 +127,6 @@ A Random Forest model was trained to predict which customers are most likely to 
 
 ---
 
-## ✅ Takeaways
 
-- Women, Germany, and Hardware Accessories drive the majority of profit
-- Promo1 campaigns increase sales but can erode margin
-- Discounting is effective, but optimal levels must be balanced
-- Random Forest model provides a valuable targeting layer for campaign efficiency
-- Future testing and rollout can integrate predictions with marketing tools
 
----
 
-## 🚀 Next Steps
-
-- Deploy the model to score new customers pre-campaign
-- Visualize conversion impact by discount bin or customer segment
-- Integrate into Streamlit dashboard for interactive use
-- Extend dataset with behavioral or transactional history for improved lift
-
----
