@@ -103,16 +103,17 @@ A Random Forest model was trained to predict which customers are most likely to 
 ## 📈 Final Evaluation
 
 ### 📋 Classification Report
-_(Paste output of `classification_report` here)_
+|              | Precision | Recall | F1-Score | Support |
+|--------------|-----------|--------|----------|---------|
+| **0**        | 0.93      | 0.75   | 0.83     | 13010   |
+| **1**        | 0.36      | 0.71   | 0.48     | 2529    |
+| **Accuracy** |           |        | 0.75     | 15539   |
+| **Macro Avg**| 0.65      | 0.73   | 0.66     | 15539   |
+| **Weighted Avg** | 0.84  | 0.75   | 0.78     | 15539   |
+
 
 ### 🔲 Confusion Matrix
-_(Insert confusion matrix image or values here)_
-
-### 📊 ROC Curve
-_(Insert ROC AUC curve image here)_
-
-### 📉 Precision–Recall Curve
-_(Insert PR curve image here)_
+![](./reports/rf_less_features_confusion_matrix.png)
 
 ---
 
