@@ -1,92 +1,135 @@
 # 🏷️ Advanced Marketing Analytics for Sports Wear Group
 
 ## 📊 Project Overview
-This project simulates a consulting role for Sports Wear Group to demonstrate how advanced analytics can improve marketing campaign performance. The goal is to build a predictive model that identifies which customers are most likely to convert during promotional campaigns, and evaluate the financial impact of data-driven targeting strategies.
+
+This project simulates a real-world consulting engagement with **Sports Wear Group**, a global sports retailer. The objective is to analyze campaign effectiveness, optimize targeting strategies, and build a predictive model to identify customers most likely to convert — using historical transaction, pricing, and product data.
 
 ---
 
-## 🎯 Business Objectives
-- Predict whether a customer will buy (`label = 1`) or not (`label = 0`) during a marketing campaign.
-- Optimize who receives the campaign to maximize profit and minimize wasted cost.
-- Simulate Return on Investment (ROI) at different probability thresholds to guide real-world decisions.
+## 🎯 Business Goals
+
+- Understand what drives conversion across time, products, and customer segments
+- Identify the most profitable combinations of product group, price, promo, and timing
+- Build a predictive model to support smarter, data-driven campaign targeting
+- Support marketing decisions with explainable KPIs, visualizations, and customer insights
 
 ---
 
 ## 🧠 Data Summary
 
-The dataset contains product, promotion, pricing, and campaign performance features, including:
+The dataset contains product-level features and campaign results across several dimensions:
 
-- **Product Features**:  
-  - `productgroup`, `category`, `style`, `gender`, `sizes`, `main_color`, `sec_color`
-- **Pricing Features**:  
-  - `regular_price`, `current_price`, `ratio`, `discount_pct`, `cost`
-- **Promotions**:  
-  - `promo1` (media ad), `promo2` (store event)
-- **Time Context**:  
-  - `retailweek`, `month`, `week_number`, `is_holiday_season`
-- **Target**:  
-  - `label` (0 = no conversion, 1 = conversion)
+### 📦 Product Features
+- `productgroup`, `category`, `style`, `gender`, `sizes`, `main_color`, `sec_color`
 
-> Note: `sales`, `unit_profit`, and `total_profit` were excluded from modeling due to leakage (they occur *after* the label is known).
+### 💸 Pricing & Promotion
+- `regular_price`, `current_price`, `ratio` (discount %), `cost`, `discount_pct`
+- `promo1` (media ad), `promo2` (in-store promo)
 
----
+### 🗓️ Time Context
+- `retailweek`, `month`, `week_number`, `holiday_season`, `month-yr`
 
-## ⚙️ Modeling Workflow
+### 🎯 Target
+- `label` → 1 = customer converted, 0 = no conversion
 
-1. **Feature Engineering**
-   - Derived discount percentages, time-based features, and size range flags.
-   - Converted RGB values to approximate human-readable colors.
-   - Encoded categorical features and dropped leaky ones.
-
-2. **Model Training**
-   - Models: Random Forest and Logistic Regression
-   - Metrics: Precision, Recall, F1 Score, Accuracy
-   - Custom threshold tuning to balance false positives/negatives
-
-3. **Business ROI Simulation**
-   - Developed reusable function to simulate profit and ROI based on:
-     - `profit_per_conversion = $804.5`
-     - `cost_per_offer = $6.5`
-   - Evaluated thresholds from 0.2 to 0.9
+> Note: `sales`, `unit_profit`, and `total_profit` were excluded from modeling due to target leakage.
 
 ---
 
-## 📈 Key Results
+## 🧾 Campaign Summary KPIs
 
-| Threshold | ROI (x) | Precision (1) | Recall (1) | Net Profit |
-|-----------|---------|----------------|-------------|------------|
-| 0.5       | 42.8x   | 0.35           | 89.8%       | $1.66M     |
-| 0.65      | 46.1x   | 0.38           | 67.6%       | $1.25M     |
-| 0.7       | **47.5x** | 0.39         | 48.2%       | $894K      |
-
-- 🔥 Threshold = **0.7** gives highest ROI but misses over 50% of potential buyers.
-- ✅ Threshold = **0.65** is best balanced in terms of cost and reach.
+- **🧍 Total Conversions**: 13,909 customers
+- **📈 Overall Conversion Rate**: 14.0%
+- **💸 Average Discount Given**: 45.44%
+- **💰 Average Profit Margin**: 52.73%
 
 ---
 
-## 📂 Files Included
+## 🔍 Insights Summary
 
-| File                          | Description |
-|-------------------------------|-------------|
-| `campaign_model.ipynb`        | Jupyter Notebook with EDA, feature engineering, model training, and ROI analysis |
-| `model_roi_evaluator.py`      | Reusable function for ROI evaluation |
-| `plots/`                      | Visualizations: conversion rates, threshold-vs-ROI graphs |
-| `README.md`                   | This file |
+### 📅 Time Series
+- Sales and conversions spike in **Nov–Dec** (holidays), but margins drop
+- Lighter discount periods (Feb–Mar) show stronger profitability
+
+### 📦 Product Group
+| Group               | Sales   | Profit    | Margin | Note            |
+|---------------------|---------|-----------|--------|-----------------|
+| Hardware Accessories| 1.14M   | \$25.6M   | 89.2%  | ✅ Very high margin |
+| Shorts              | 0.57M   | \$12.4M   | 83.4%  | ✅ High margin |
+| Shoes               | 3.41M   | \$50.4M   | 32.7%  | ❗ High volume, low margin |
+
+### 🌍 Country
+| Country | Sales  | Profit    | Margin | Note          |
+|---------|--------|-----------|--------|---------------|
+| Germany | 2.80M  | \$48.3M   | 54.4%  | ✅ Top performer |
+| France  | 0.89M  | \$16.2M   | 49.9%  | 🟡 Underutilized |
+
+### 🚻 Gender
+| Gender  | Sales  | Profit    | Margin | Note              |
+|---------|--------|-----------|--------|-------------------|
+| Women   | 3.97M  | \$74.4M   | 61.1%  | ✅ Highest returns |
+| Unisex  | 0.57M  | \$8.0M    | 28.2%  | 🔻 Underperforming |
+
+### 🎯 Promotion
+- **Promo1**: Drives volume but lowers margin; used heavily in holiday months
+- **Promo2**: Sparingly used; unclear impact; consider structured testing
 
 ---
 
-## 📌 Takeaways
+## 🤖 Predictive Modeling: Random Forest Classifier
 
-- Deep discounts alone don’t ensure conversions — data-driven targeting is more effective.
-- Models benefit from engineered features like color, sizes, seasonality, and promo signals.
-- ROI simulation is critical for aligning model predictions with real business outcomes.
+A Random Forest model was trained to predict which customers are most likely to convert. The goal is to support **smarter campaign targeting** that avoids waste and maximizes return.
+
+### ⚙️ Modeling Workflow
+
+- **Feature Engineering**:
+  - Extracted time components, size flags, color names from RGB
+  - Encoded categorical variables
+  - Removed features with data leakage (e.g., `sales`, `unit_profit`)
+
+- **Model Training**:
+  - Models tested: Logistic Regression and Random Forest
+  - Final model: Random Forest with threshold tuning
+
+- **Final Threshold**: 0.65  
+  - **Precision**: 38%  
+  - **Recall**: 68%  
+  - **Accuracy**: 74%  
+  - Balanced between reach and precision
+
+---
+
+## 📈 Final Evaluation
+
+### 📋 Classification Report
+_(Paste output of `classification_report` here)_
+
+### 🔲 Confusion Matrix
+_(Insert confusion matrix image or values here)_
+
+### 📊 ROC Curve
+_(Insert ROC AUC curve image here)_
+
+### 📉 Precision–Recall Curve
+_(Insert PR curve image here)_
+
+---
+
+## ✅ Takeaways
+
+- Women, Germany, and Hardware Accessories drive the majority of profit
+- Promo1 campaigns increase sales but can erode margin
+- Discounting is effective, but optimal levels must be balanced
+- Random Forest model provides a valuable targeting layer for campaign efficiency
+- Future testing and rollout can integrate predictions with marketing tools
 
 ---
 
 ## 🚀 Next Steps
-- Deploy the model in production to score real-time campaign targets.
-- Integrate into marketing dashboard for continuous testing and ROI tracking.
-- Extend the dataset with customer behavioral and demographic data.
+
+- Deploy the model to score new customers pre-campaign
+- Visualize conversion impact by discount bin or customer segment
+- Integrate into Streamlit dashboard for interactive use
+- Extend dataset with behavioral or transactional history for improved lift
 
 ---
-
